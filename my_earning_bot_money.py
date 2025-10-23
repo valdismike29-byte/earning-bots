@@ -322,3 +322,17 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+import threading
+import time
+
+def keep_alive():
+    while True:
+        try:
+            print("🔄 Keep alive - бот работает")
+        except:
+            pass
+        time.sleep(300)  # каждые 5 минут
+
+# Запускаем keep-alive в фоне
+threading.Thread(target=keep_alive, daemon=True).start()
