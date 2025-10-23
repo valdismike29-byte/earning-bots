@@ -1,5 +1,5 @@
 services:
-  - type: web
+  - type: worker
     name: earning-bot
     env: python
     region: oregon
