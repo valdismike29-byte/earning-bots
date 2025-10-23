@@ -1,0 +1,6 @@
+{
+  "name": "Earning Bots",
+  "image": "python:3.11",
+  "postCreateCommand": "pip install -r requirements.txt",
+  "postStartCommand": "nohup python3 my_earning_bot_money.py > bot.log 2>&1 &"
+}
