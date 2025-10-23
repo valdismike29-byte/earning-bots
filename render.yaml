@@ -9,6 +9,3 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
-git add .
-git commit -m "Add render config"
-git push
