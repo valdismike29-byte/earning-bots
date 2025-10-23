@@ -1,0 +1,78 @@
+aa#!/usr/bin/env python3
+from telegram import Update
+from telegram.ext import Application, CommandHandler, ContextTypes
+import asyncio
+
+# ВАЖНО! Ваш токен от BotFather
+TELEGRAM_TOKEN = "7975407210:AAFRf2UeL2hxzRekrVE5jk6JmKsXPWJ33jk"
+ADMIN_ID = 123456789  # Замените на ваш Telegram ID
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Команда /start"""
+    user_name = update.effective_user.first_name
+    await update.message.reply_text(
+        f"🎉 Привет, {user_name}!\n\n"
+        f"💰 Ваш личный бот для заработка запущен!\n\n"
+        f"📊 Доступные команды:\n"
+        f"/earnings - показать заработок\n"
+        f"/referrals - ваши рефералы\n"
+        f"/help - помощь\n\n"
+        f"✅ Бот работает в GitHub Codespaces!"
+    )
+
+async def earnings(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Показать заработок"""
+    await update.message.reply_text(
+        "💰 ВАШ ЗАРАБОТОК:\n\n"
+        "📈 Сегодня: $0.00 (тестовый режим)\n"
+        "💎 Всего: $0.00\n"
+        "👥 Рефералов: 0\n\n"
+        "🚀 Бот готов к настройке реального заработка!"
+    )
+
+async def referrals(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Показать рефералов"""
+    await update.message.reply_text(
+        "👥 ВАШИ РЕФЕРАЛЫ:\n\n"
+        "📊 Всего рефералов: 0\n"
+        "💰 Заработано с рефералов: $0.00\n"
+        "🔗 Ваша реферальная ссылка: готовится...\n\n"
+        "✅ Система готова к активации!"
+    )
+
+async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Помощь"""
+    await update.message.reply_text(
+        "❓ ПОМОЩЬ:\n\n"
+        "🤖 Это ваш личный бот для заработка\n"
+        "💻 Работает на GitHub Codespaces\n\n"
+        "📋 Команды:\n"
+        "/start - главное меню\n"
+        "/earnings - ваш заработок\n"
+        "/referrals - реферальная система\n"
+        "/help - эта помощь\n\n"
+        "🎯 Готов к расширению функций!"
+    )
+
+def main():
+    """Запуск бота"""
+    print("🚀 Запуск бота для заработка...")
+    print(f"🤖 Токен: {TELEGRAM_TOKEN[:10]}...")
+    print("💻 Среда: GitHub Codespaces")
+    
+    application = Application.builder().token(TELEGRAM_TOKEN).build()
+    
+    # Добавляем обработчики команд
+    application.add_handler(CommandHandler("start", start))
+    application.add_handler(CommandHandler("earnings", earnings))
+    application.add_handler(CommandHandler("referrals", referrals))
+    application.add_handler(CommandHandler("help", help_command))
+    
+    print("✅ Бот запущен и готов к работе!")
+    print("💡 Найдите бота в Telegram и нажмите /start")
+    
+    # Запускаем бота
+    application.run_polling()
+
+if __name__ == '__main__':
+    main()
