@@ -341,7 +341,7 @@ threading.Thread(target=keep_alive, daemon=True).start()
 import random
 
 # Список чатов для автопоста (добавим позже)
-PROMO_CHATS = []
+PROMO_CHATS = ["@freten", "@frilans_uslugi_vakansii", "@theyseeku", "@normrabota", "@zapwork", "@workathomerus", "@frilancekomfort", "@webfrl", "@novobranez", "@noexperience"]
 
 async def auto_promote():
     """Автопродвижение бота"""
